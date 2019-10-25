@@ -21,6 +21,6 @@ RUN apt-get update && \
 
 COPY ./services/builder/bin/* /usr/local/bin/
 
-COPY ./tools/bin/* /usr/bin/
+COPY ./tools/bin/* /usr/local/bin/
 
 WORKDIR /runtime

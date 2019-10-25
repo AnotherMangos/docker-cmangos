@@ -20,6 +20,7 @@
 version: '3.0'
 services:
   mangosd:
+    image: tek_mangos_mangosd
     build:
       context: .
       dockerfile: ./services/mangosd/Dockerfile
@@ -33,6 +34,7 @@ services:
       - 8085:8085
     restart: unless-stopped
   realmd:
+    image: tek_mangos_realmd
     build:
       context: .
       dockerfile: ./services/realmd/Dockerfile
@@ -62,18 +64,3 @@ services:
     links:
       - mysql
     command: "initdb.sh"
-
-
-  # remove this part by native docker build
-  build:
-    image: tek_mangos_builder
-    build:
-      context: .
-      dockerfile: ./services/builder/Dockerfile
-    volumes:
-      - ./data/builder/etc:/runtime/etc
-      - ./data/builder/data:/runtime/data
-    command: "build.sh"
-  runtime:
-    image: tek_mangos_runtime
-    build: ./services/runtime
