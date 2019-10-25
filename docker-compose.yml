@@ -1,0 +1,79 @@
+#######################################################
+#
+#  To run this compose file, you must specify
+#  services to run:
+#
+#    docker-compose up [-d] <service1> [<service2> ...]
+#
+#  To initialize your setup:
+#
+#    docker-compose up initdb
+#
+#  This will launch MySQL and initialize the database
+#
+#  To start mangos and realmd:
+#
+#    docker-compose up -d mangosd realmd
+#
+#######################################################
+
+version: '3.0'
+services:
+  mangosd:
+    build:
+      context: .
+      dockerfile: ./services/mangosd/Dockerfile
+    links:
+      - mysql
+      - realmd
+    volumes:
+      - ./data/mangosd/etc:/runtime/etc
+      - ./data/mangosd/data:/runtime/data
+    ports:
+      - 8085:8085
+    restart: unless-stopped
+  realmd:
+    build:
+      context: .
+      dockerfile: ./services/realmd/Dockerfile
+    links:
+      - mysql
+    volumes:
+      - ./data/realmd/etc:/runtime/etc
+      - ./data/realmd/data:/runtime/data
+    ports:
+      - 3724:3724
+    restart: unless-stopped
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=mangos
+    command:
+      - --sql-mode=NO_ENGINE_SUBSTITUTION
+    restart: unless-stopped
+  initdb:
+    image: tek_mangos_builder
+    build:
+      context: .
+      dockerfile: ./services/builder/Dockerfile
+    volumes:
+      - ./data/builder/etc:/runtime/etc
+      - ./data/builder/data:/runtime/data
+    links:
+      - mysql
+    command: "initdb.sh"
+
+
+  # remove this part by native docker build
+  build:
+    image: tek_mangos_builder
+    build:
+      context: .
+      dockerfile: ./services/builder/Dockerfile
+    volumes:
+      - ./data/builder/etc:/runtime/etc
+      - ./data/builder/data:/runtime/data
+    command: "build.sh"
+  runtime:
+    image: tek_mangos_runtime
+    build: ./services/runtime

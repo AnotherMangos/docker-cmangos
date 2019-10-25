@@ -1,0 +1,16 @@
+FROM ubuntu:14.04
+
+RUN apt-get update && \
+    apt-get install -y libmysql++-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/
+
+WORKDIR /runtime/bin
+
+COPY ./data/builder/data/run/bin/mangosd ./
+
+COPY ./services/mangosd/bin/* ./
+
+COPY ./tools/bin/* /usr/bin/
+
+CMD ["./mangosd.sh"]

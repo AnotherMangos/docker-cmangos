@@ -1,0 +1,5 @@
+MYSQL_ROOT_PASSWORD="mangos"
+MYSQL_HOST="mysql"
+MYSQL_PORT="3306"
+GITHUB_CMANGOS="git://github.com/cmangos/mangos-classic.git"
+GITHUB_DATABASE="git://github.com/cmangos/classic-db.git"
