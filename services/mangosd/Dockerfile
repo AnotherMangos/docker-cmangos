@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 RUN apt-get update && \
-    apt-get install -y libmysql++-dev && \
+    apt-get install -y libmysql++-dev mysql-client && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+source /runtime/etc/configrc
 wait-for-mysql.sh
 echo "# Append commands to this file to inject them into the mangosd service">>/commands
 cd /runtime/bin

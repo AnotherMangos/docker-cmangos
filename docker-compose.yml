@@ -10,7 +10,10 @@ services:
       - realmd
     volumes:
       - ./data/mangosd/etc:/runtime/etc
-      - ./data/mangosd/data:/runtime/data
+      - ./data/mangosd/data/dbc:/runtime/bin/dbc
+      - ./data/mangosd/data/maps:/runtime/bin/maps
+      - ./data/mangosd/data/mmaps:/runtime/bin/mmaps
+      - ./data/mangosd/data/vmaps:/runtime/bin/vmaps
     ports:
       - 8085:8085
     restart: unless-stopped
