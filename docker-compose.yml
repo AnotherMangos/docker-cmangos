@@ -36,6 +36,8 @@ services:
       - MYSQL_ROOT_PASSWORD=mangos
     command:
       - --sql-mode=NO_ENGINE_SUBSTITUTION
+    ports:
+      - 3306:3306
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
