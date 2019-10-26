@@ -8,8 +8,7 @@ build:
 
 extract-maps path:
 	cp ./data/builder/data/run/bin/tools/* {{ path }}
-	files=`ls ./data/builder/data/run/bin/tools/`
-	cd {{ path }} && chmod 755 ./ExtractResources.sh &&	./ExtractResources.sh ; rm $files
+	files=`ls ./data/builder/data/run/bin/tools/` && cd {{ path }} && chmod 755 ./ExtractResources.sh && ./ExtractResources.sh ; rm $files
 	mv {{ path }}/maps/ ./data/mangosd/data/ || true
 	mv {{ path }}/vmaps/ ./data/mangosd/data/ || true
 	mv {{ path }}/mmaps/ ./data/mangosd/data/ || true
