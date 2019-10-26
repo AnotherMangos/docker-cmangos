@@ -1,4 +1,3 @@
-#change for justfile
 
 create-builder:
     docker build -f ./services/builder/Dockerfile -t tek_mangos_builder .

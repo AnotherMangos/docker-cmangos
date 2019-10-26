@@ -1,22 +1,3 @@
-#######################################################
-#
-#  To run this compose file, you must specify
-#  services to run:
-#
-#    docker-compose up [-d] <service1> [<service2> ...]
-#
-#  To initialize your setup:
-#
-#    docker-compose up initdb
-#
-#  This will launch MySQL and initialize the database
-#
-#  To start mangos and realmd:
-#
-#    docker-compose up -d mangosd realmd
-#
-#######################################################
-
 version: '3.0'
 services:
   mangosd:
@@ -52,6 +33,8 @@ services:
       - MYSQL_ROOT_PASSWORD=mangos
     command:
       - --sql-mode=NO_ENGINE_SUBSTITUTION
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
   initdb:
     image: tek_mangos_builder
