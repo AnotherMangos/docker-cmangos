@@ -20,7 +20,27 @@ extract-maps path:
 # Initialize the db with the builder
 init-db:
 	docker-compose up initdb
+	docker-compose up -d mangosd
+	sleep 2
+	just exec account delete ADMINISTRATOR
+	just exec account delete GAMEMASTER
+	just exec account delete MODERATOR
+	just exec account delete PLAYER
+	docker-compose down
+
+# reset the db
+reset-db:
+	docker-compose down
+	rm -rf ./data/mysql/*
 
 # Start the auth and game server
 run:
-	docker-compose up mangosd
+	docker-compose up mysql realmd mangosd
+
+# start a terminal on the game server
+terminal:
+	docker-compose exec mangosd ./terminal.sh
+
+# execute a new command on the game server
+exec +cmd:
+	docker-compose exec mangosd ./exec.sh {{ cmd }}

@@ -21,4 +21,4 @@ function sendCommands {
   done
 }
 
-(tail -f /log | showFeedback) & sendCommands && fg
+(tail -f /log 2> /dev/null | showFeedback) & sendCommands && fg
