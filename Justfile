@@ -8,6 +8,10 @@ create-builder:
 build-servers:
 	docker run -v ` realpath ./data/builder/etc`:/runtime/etc -v ` realpath ./data/builder/data`:/runtime/data tek_mangos_builder build.sh
 
+# Build the dev version of realmd and mangosd
+build-dev-servers:
+	docker run -v ` realpath ./data/builder/etc`:/runtime/etc -v ` realpath ./data/builder/data`:/runtime/data tek_mangos_builder dev-build.sh
+
 # Extracts the maps from the WOW client directory and put them in the mounted volume of the game server
 extract-maps path:
 	cp ./data/builder/data/run/bin/tools/* {{ path }}

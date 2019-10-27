@@ -1,15 +1,17 @@
 #!/bin/bash
 
+
 BUILD_DEST=/runtime/data/run
 mkdir $BUILD_DEST
 
+MOUNTED_MANGOS=/runtime/data
+
 source /runtime/etc/configrc
-echo "Cloning Mangos Repos"
-git clone $GITHUB_CMANGOS ./mangos
+cd $MOUNTED_MANGOS
 echo "Building Mangos"
 mkdir -p ./build
 cd ./build
-cmake ../mangos -DCMAKE_INSTALL_PREFIX=\../mangos/run -DBUILD_EXTRACTORS=ON -DPCH=1 -DDEBUG=0 -DBUILD_PLAYERBOT=ONs
+cmake ../mangos -DCMAKE_INSTALL_PREFIX=\../mangos/run -DPCH=1 -DDEBUG=0
 make
 make install
 cd ..
