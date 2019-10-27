@@ -14,8 +14,7 @@ services:
       - ./data/mangosd/data/maps:/runtime/bin/maps
       - ./data/mangosd/data/mmaps:/runtime/bin/mmaps
       - ./data/mangosd/data/vmaps:/runtime/bin/vmaps
-      # dev only
-      - ./data/builder/data/run/bin/mangosd:/runtime/bin/mangosd
+      # - ./data/builder/data/run/bin/mangosd:/runtime/bin/mangosd
     ports:
       - 8085:8085
     restart: unless-stopped
@@ -29,6 +28,7 @@ services:
     volumes:
       - ./data/realmd/etc:/runtime/etc
       - ./data/realmd/data:/runtime/data
+      # - ./data/builder/data/run/bin/realmd:/runtime/bin/realmd
     ports:
       - 3724:3724
     restart: unless-stopped

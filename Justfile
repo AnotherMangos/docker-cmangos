@@ -1,4 +1,13 @@
 
+# initialize the repository
+init:
+	mkdir -p ./data/builder/data || true
+	mkdir -p ./data/builder/etc || true
+	mkdir -p ./data/mangosd/data || true
+	mkdir -p ./data/mangosd/etc || true
+	mkdir -p ./data/realmd/data || true
+	mkdir -p ./data/realmd/etc || true
+	mkdir -p ./data/mysql || true
 
 # Create the docker container used to build realmd and mangosd and used to initialize the db
 create-builder:
@@ -10,6 +19,8 @@ build-servers:
 
 # Build the dev version of realmd and mangosd
 build-dev-servers:
+	#! /usr/bin/bash
+	if [ ! -d "./data/builder/data/mangos" ]; then echo "First clone the cmangos-classic repository in './data/builder/data/mangos'"; exit 1 ; fi
 	docker run -v ` realpath ./data/builder/etc`:/runtime/etc -v ` realpath ./data/builder/data`:/runtime/data tek_mangos_builder dev-build.sh
 
 # Extracts the maps from the WOW client directory and put them in the mounted volume of the game server
