@@ -2,7 +2,6 @@
 
 
 BUILD_DEST=/runtime/data/run
-mkdir $BUILD_DEST
 
 MOUNTED_MANGOS=/runtime/data
 
@@ -16,5 +15,6 @@ make
 make install
 cd ..
 rm -rf $BUILD_DEST/
+mkdir -p $BUILD_DEST
 mv ./mangos/run/* $BUILD_DEST/
 echo Done.

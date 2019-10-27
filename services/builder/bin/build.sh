@@ -1,7 +1,6 @@
 #!/bin/bash
 
 BUILD_DEST=/runtime/data/run
-mkdir $BUILD_DEST
 
 source /runtime/etc/configrc
 echo "Cloning Mangos Repos"
@@ -14,5 +13,6 @@ make
 make install
 cd ..
 rm -rf $BUILD_DEST/
+mkdir -p $BUILD_DEST
 mv ./mangos/run/* $BUILD_DEST/
 echo Done.
