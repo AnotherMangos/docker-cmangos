@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   mangosd:
-    image: tek_mangos_mangosd
+    image: steakhouse.sysroot.ovh/mangosd
     build:
       context: .
       dockerfile: ./services/mangosd/Dockerfile
@@ -19,7 +19,7 @@ services:
       - 8085:8085
     restart: unless-stopped
   realmd:
-    image: tek_mangos_realmd
+    image: steakhouse.sysroot.ovh/realmd
     build:
       context: .
       dockerfile: ./services/realmd/Dockerfile
@@ -44,7 +44,7 @@ services:
       - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
   initdb:
-    image: tek_mangos_builder
+    image: steakhouse.sysroot.ovh/builder
     build:
       context: .
       dockerfile: ./services/builder/Dockerfile
