@@ -43,6 +43,10 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
+  api:
+    image: steakhouse.sysroot.ovh/cmangos-api
+    links:
+      - mysql
   initdb:
     image: steakhouse.sysroot.ovh/builder
     build:
