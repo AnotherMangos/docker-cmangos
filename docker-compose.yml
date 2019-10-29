@@ -43,8 +43,14 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
+  web:
+    image: steakhouse.sysroot.ovh/cmangos-web
+    ports:
+      - 8080:8080
   api:
     image: steakhouse.sysroot.ovh/cmangos-api
+    ports:
+      - 5556:5556
     links:
       - mysql
   initdb:
