@@ -49,7 +49,7 @@ reset-db:
 	rm -rf ./data/mysql/*
 
 # Start the auth and game server
-run +cmd:
+run +cmd="":
 	docker-compose up {{ cmd }} mysql realmd mangosd api web
 
 # start a terminal on the game server
