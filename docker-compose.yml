@@ -53,8 +53,12 @@ services:
       - 5556:5556
     links:
       - mysql
+      - realmd
+      - mangosd
     depends_on:
       - mysql
+      - realmd
+      - mangosd
     command: sh -c "sleep 20 && ./api-cmangos contrib/config.ini.dist"
   initdb:
     image: steakhouse.sysroot.ovh/builder
