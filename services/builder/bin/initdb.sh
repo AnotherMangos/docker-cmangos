@@ -13,6 +13,7 @@ mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD < /mangos/sql/
 mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD classicmangos < /mangos/sql/base/mangos.sql && \
 mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD classiccharacters < /mangos/sql/base/characters.sql && \
 mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD classicrealmd < /mangos/sql/base/realmd.sql && \
+mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD classicrealmd < "UPDATE realmlist SET address = '$REALM_HOST' WHERE id = 1;"
 cd /classicdb && \
 ./InstallFullDB.sh && \
 echo Done.
