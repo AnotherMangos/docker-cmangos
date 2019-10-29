@@ -34,7 +34,7 @@ extract-maps path:
 
 # Initialize the db with the builder
 init-db realmhost="127.0.0.1":
-	docker-compose up initdb -e OVERLOADED_REALM_HOST={{ realmhost }}
+	docker-compose up  -e OVERLOADED_REALM_HOST={{ realmhost }} initdb
 	docker-compose up -d mangosd
 	sleep 2
 	just exec account delete ADMINISTRATOR
