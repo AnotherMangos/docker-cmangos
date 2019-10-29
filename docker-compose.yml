@@ -44,11 +44,11 @@ services:
       - ./data/mysql:/var/lib/mysql
     restart: unless-stopped
   web:
-    image: steakhouse.sysroot.ovh/cmangos-web
+    image: steakhouse.sysroot.ovh/web-cmangos
     ports:
       - 8080:8080
   api:
-    image: steakhouse.sysroot.ovh/cmangos-api
+    image: steakhouse.sysroot.ovh/api-cmangos
     ports:
       - 5556:5556
     links:
