@@ -5,7 +5,7 @@ cd / && \
 wait-for-mysql.sh && \
 git clone $GITHUB_DATABASE classicdb && \
 git clone $GITHUB_CMANGOS mangos && \
-git clone $GITHUB_CMANGOS api && \
+git clone $GITHUB_API api && \
 cp /runtime/etc/InstallFullDB.config /classicdb/ && \
 mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD < /api/sql/create_database.sql && \
 mysql -uroot -h $MYSQL_HOST -P $MYSQL_PORT -p$MYSQL_ROOT_PASSWORD cmangosapi < /api/sql/create_tables.sql && \
