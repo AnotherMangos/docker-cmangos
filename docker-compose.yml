@@ -46,7 +46,7 @@ services:
   web:
     image: steakhouse.sysroot.ovh/web-cmangos
     ports:
-      - 8080:8080
+      - 8080:80
   api:
     image: steakhouse.sysroot.ovh/api-cmangos
     ports:
